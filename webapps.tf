@@ -8,7 +8,7 @@ resource "azuread_application" "webapp_authen" {
   web {
     homepage_url  = "https://${var.webapp_host_name}.azurewebsites.net"
     logout_url    = "https://${var.webapp_host_name}.azurewebsites.net/logout"
-    redirect_uris = ["https://librechatappewel.azurewebsites.net/.auth/login/aad/callback"]
+    redirect_uris = ["https://${var.webapp_host_name}.azurewebsites.net/.auth/login/aad/callback"]
 
     implicit_grant {
     id_token_issuance_enabled = true
