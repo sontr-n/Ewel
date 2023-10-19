@@ -1,12 +1,24 @@
+locals {
+  cosmosdb_ip_range_azure = [
+    "104.42.195.92",
+    "40.76.54.131",
+    "52.176.6.30",
+    "52.169.50.45",
+    "52.187.184.26"
+  ]
+}
+
+
 resource "azurerm_cosmosdb_account" "librechat" {
-  name                      = "librechatdb${random_string.random_postfix.result}"
+  name                      = var.cosmodb_name
   resource_group_name       = azurerm_resource_group.this.name
   location                  = azurerm_resource_group.this.location
   offer_type                = "Standard"
   kind                      = "MongoDB"
   enable_automatic_failover = false
   enable_free_tier          = var.use_cosmosdb_free_tier
-
+  ip_range_filter           = "${join(",",local.cosmosdb_ip_range_azure)}"
+  mongo_server_version      = 4.2  
 
   consistency_policy {
     consistency_level       = "BoundedStaleness"

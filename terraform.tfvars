@@ -1,0 +1,13 @@
+location="japaneast"
+app_title="gprd-c-api-ase01"
+app_service_sku_name="S2"
+use_cosmosdb_free_tier=true
+public_network_access_enabled=true
+webapp_host_name="gprd-c-api-ase01"
+search_host_name="gprd-c-api-ase02"
+cosmodb_name="gprdcapist-01" 
+openai_name="prd-c-api-openai01"
+service_plan_name="gprd-c-api-asp01"
+resource_group_name="gprd-bvnet-rg01"
+network_name="gprd-c-vnet01"
+subnet_name="gprd-c-snet01"

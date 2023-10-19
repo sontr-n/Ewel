@@ -1,6 +1,6 @@
 variable "location" {
   description = "The location where all resources will be deployed"
-  default     = "westeurope"
+  default     = "japaneast"
 }
 
 variable "app_title" {
@@ -8,15 +8,9 @@ variable "app_title" {
   default     = "librechat"
 }
 
-variable "openai_key" {
-  description = "OpenAI API Key"
-  default = ""
-  sensitive = true
-}
-
 variable "app_service_sku_name" {
   description = "size of the VM that runs the librechat app. F1 is free but limited to 1h per day."
-  default = "B1"
+  default = "F1"
 }
 
 variable "mongo_uri" {
@@ -27,30 +21,41 @@ variable "mongo_uri" {
 
 variable "use_cosmosdb_free_tier" {
   description = "Flag to enable/disable free tier of cosmosdb. This needs to be false if another instance already uses free tier."
+  type = bool
   default = true
 }
 
-# variable "deployments" {
-#   description = "(Optional) Specifies the deployments of the Azure OpenAI Service"
-#   type = list(object({
-#     name = string
-#     model = object({
-#       name = string
-#       version = string
-#     })
-#     rai_policy_name = string  
-#   }))
-#   default = [
-#     {
-#       name = "gpt-35-turbo"
-#       model = {
-#         name = "gpt-35-turbo"
-#         version = "0301"
-#       }
-#       rai_policy_name = ""
-#     }
-#   ] 
-# }
+variable "webapp_host_name" {
+  description = "Name hosted web app services"
+}
+
+variable "search_host_name" {
+  description = "Name hosted web app search services"
+}
+
+variable "openai_name" {
+  description = "Name OpenAI resource"
+}
+
+variable "cosmodb_name" {
+  description = "Name CosmosDB resource"
+}
+
+variable "service_plan_name" {
+  description = "Name service plan resource"
+}
+
+variable "resource_group_name" {
+  description = "Name resource group"
+}
+
+variable "network_name" {
+  description = "network name"
+}
+
+variable "subnet_name" {
+  description = "subnet name"
+}
 
 variable "public_network_access_enabled" {
   description = "(Optional) Specifies whether public network access is allowed for the Azure OpenAI Service"
